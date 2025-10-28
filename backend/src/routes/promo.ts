@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { PromoService } from '../services/promoService.js';
-import { validatePromoCode } from '../middleware/validation.js';
-import { createError } from '../middleware/errorHandler.js';
+import { PromoService } from '../services/promoService';
+import { validatePromoCode } from '../middleware/validation';
+import { createError } from '../middleware/errorHandler';
 
 const router = Router();
 const promoService = new PromoService();

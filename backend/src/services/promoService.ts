@@ -1,22 +1,22 @@
-import pool from '../config/database.js';
-import { PromoCode } from '../types/index.js';
-import { createError } from '../middleware/errorHandler.js';
+import pool from '../config/database';
+import { PromoCode } from '../types/index';
+import { createError } from '../middleware/errorHandler';
 
 export class PromoService {
   async validatePromoCode(code: string): Promise<PromoCode | null> {
     try {
       console.log(`🔍 Validating promo code: "${code}" (uppercase: "${code.toUpperCase()}")`);
-      
+
       const result = await pool.query(
         'SELECT * FROM promo_codes WHERE code = $1 AND is_active = true',
         [code.toUpperCase()]
       );
-      
+
       console.log(`📊 Found ${result.rows.length} matching promo codes`);
       if (result.rows.length > 0) {
         console.log(`✅ Promo code found:`, result.rows[0]);
       }
-      
+
       return result.rows.length > 0 ? result.rows[0] : null;
     } catch (error) {
       console.error('Error validating promo code:', error);
@@ -39,7 +39,7 @@ export class PromoService {
 
     if (promoCode.discount_type === 'percentage') {
       discount = (amount * discountValue) / 100;
-      
+
       // Apply maximum discount limit if specified
       if (maxDiscount && discount > maxDiscount) {
         discount = maxDiscount;
@@ -54,7 +54,7 @@ export class PromoService {
 
   async validateAndCalculateDiscount(code: string, amount: number): Promise<number> {
     const promoCode = await this.validatePromoCode(code);
-    
+
     if (!promoCode) {
       throw createError('Invalid or expired promo code', 400);
     }
@@ -67,7 +67,7 @@ export class PromoService {
       const result = await pool.query(
         'SELECT * FROM promo_codes WHERE is_active = true ORDER BY created_at DESC'
       );
-      
+
       return result.rows;
     } catch (error) {
       console.error('Error fetching promo codes:', error);

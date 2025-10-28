@@ -1,17 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import pool from '../config/database.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import pool from '../config/database';
 
 async function migrate() {
   try {
     console.log('🔄 Running database migrations...');
-    console.log('📁 Schema path:', path.join(__dirname, 'schema.sql'));
-
     const schemaPath = path.join(__dirname, 'schema.sql');
+    console.log('📁 Schema path:', schemaPath);
     const schema = fs.readFileSync(schemaPath, 'utf8');
 
     console.log('📊 Executing schema...');

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import experiencesRouter from './experiences.js';
-import bookingsRouter from './bookings.js';
-import promoRouter from './promo.js';
+import experiencesRouter from './experiences';
+import bookingsRouter from './bookings';
+import promoRouter from './promo';
 
 const router = Router();
 

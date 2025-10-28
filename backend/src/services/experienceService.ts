@@ -1,6 +1,6 @@
-import pool from '../config/database.js';
-import { Experience, ExperienceSlot, ExperienceWithSlots } from '../types/index.js';
-import { createError } from '../middleware/errorHandler.js';
+import pool from '../config/database';
+import { Experience, ExperienceSlot, ExperienceWithSlots } from '../types/index';
+import { createError } from '../middleware/errorHandler';
 
 export class ExperienceService {
   async getAllExperiences(): Promise<Experience[]> {

@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import pool from '../config/database.js';
+import pool from '../config/database';
 
 const experiences = [
   {
