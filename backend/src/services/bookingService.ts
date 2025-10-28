@@ -1,9 +1,9 @@
 import { randomUUID } from 'crypto';
-import pool from '../config/database';
-import { Booking, BookingRequest } from '../types/index';
-import { createError } from '../middleware/errorHandler';
-import { ExperienceService } from './experienceService';
-import { PromoService } from './promoService';
+import pool from '../config/database.js';
+import { Booking, BookingRequest } from '../types/index.js';
+import { createError } from '../middleware/errorHandler.js';
+import { ExperienceService } from './experienceService.js';
+import { PromoService } from './promoService.js';
 
 export class BookingService {
     private experienceService = new ExperienceService();

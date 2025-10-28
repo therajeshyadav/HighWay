@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { BookingService } from '../services/bookingService';
-import { validateBooking } from '../middleware/validation';
-import { createError } from '../middleware/errorHandler';
+import { BookingService } from '../services/bookingService.js';
+import { validateBooking } from '../middleware/validation.js';
+import { createError } from '../middleware/errorHandler.js';
 
 const router = Router();
 const bookingService = new BookingService();

@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { ExperienceService } from '../services/experienceService';
-import { createError } from '../middleware/errorHandler';
+import { ExperienceService } from '../services/experienceService.js';
+import { createError } from '../middleware/errorHandler.js';
 
 const router = Router();
 const experienceService = new ExperienceService();

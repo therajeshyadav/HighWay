@@ -1,6 +1,6 @@
-import pool from '../config/database';
-import { PromoCode } from '../types/index';
-import { createError } from '../middleware/errorHandler';
+import pool from '../config/database.js';
+import { PromoCode } from '../types/index.js';
+import { createError } from '../middleware/errorHandler.js';
 
 export class PromoService {
   async validatePromoCode(code: string): Promise<PromoCode | null> {
